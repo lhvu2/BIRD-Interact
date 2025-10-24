@@ -1,4 +1,25 @@
-.DS_store
-postgre_table_dumps
-postgre_table_dumps_full
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
+# Virtual environments
+.env
+.venv/
+env/
+venv/
+
+# VS Code settings
+.vscode/
+
+# Byte-compiled or temporary files
+*.log
+*.tmp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+__MACOSX
+.gitignore

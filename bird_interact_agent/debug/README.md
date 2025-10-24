@@ -46,11 +46,9 @@ pip install debugpy
 
 **Optionally, install with container id**
 
-E.g., container_name=2686094332eb. **Note that this name is used in the command below, change accordingly**
-
 Use "docker ps" to find the id of the "bird_interact_eval" container
 ```
-docker exec -it 2686094332eb pip install debugpy
+docker exec -it bird_interact_eval pip install debugpy
 ```
 
 **set up data**
@@ -60,7 +58,20 @@ Make sure the data is available at: `.../bird_interact_agent/data/bird-interact-
 
 **on host console, start the debugger server**
 
-docker exec -it 2686094332eb python -u -m debugpy --listen 0.0.0.0:5678 --wait-for-client experiments/eval_react_bird_interact.py --env bird_interact_sql --data_path ./data/bird-interact-lite/bird_interact_data.jsonl --log_dir ./outputs/single_runs/debug --max_turns 100 --agent_model openai/gpt-oss-120b --user_model openai/gpt-oss-120b --user_patience_budget 6 --agent_model_provider rits --user_model_provider rits --db_port 5432 --use_encoder_decoder --verbose
+
+`Running for lite` version. On host console, in `BIRD-Interact/env`:
+
+```
+docker exec -it bird_interact_eval python -u -m debugpy --listen 0.0.0.0:5678 --wait-for-client ./bird_interact_agent/experiments/eval_react_bird_interact.py --env bird_interact_sql --data_path ./bird_interact_agent/data/bird-interact-lite/bird_interact_data.jsonl --log_dir ./bird_interact_agent/outputs/single_runs/debug --max_turns 100 --agent_model openai/gpt-oss-120b --user_model openai/gpt-oss-120b --user_patience_budget 6 --agent_model_provider rits --user_model_provider rits --db_port 5432 --use_encoder_decoder --verbose
+```
+
+
+`Running for Full` version. On host console, in `BIRD-Interact/env`:
+
+```
+docker exec -it bird_interact_eval python -u -m debugpy --listen 0.0.0.0:5678 --wait-for-client ./bird_interact_agent/experiments/eval_react_bird_interact.py --env bird_interact_sql --data_path ./bird_interact_agent/data/bird-interact-full/bird_interact_data.jsonl --log_dir ./bird_interact_agent/outputs/single_runs/debug --max_turns 100 --agent_model openai/gpt-oss-120b --user_model openai/gpt-oss-120b --user_patience_budget 6 --agent_model_provider rits --user_model_provider rits --db_port 5432 --use_encoder_decoder --verbose
+```
+
 
 **Make sure VSCode launch.json has the following content**
 
@@ -118,6 +129,9 @@ if you stop the debugging session on VSCode UI, you need to restart the debuggin
 
 **Run directly from host**
 
+`For lite version`:
+
 ```
-docker exec -it 2686094332eb python -u experiments/eval_react_bird_interact.py --env bird_interact_sql --data_path ./data/bird-interact-lite/bird_interact_data.jsonl --log_dir ./outputs/single_runs/debug --max_turns 100 --agent_model openai/gpt-oss-120b --user_model openai/gpt-oss-120b --user_patience_budget 6 --agent_model_provider rits --user_model_provider rits --db_port 5432 --use_encoder_decoder --verbose
+docker exec -it bird_interact_eval python -u ./bird_interact_agent/experiments/eval_react_bird_interact.py --env bird_interact_sql --data_path ./bird_interact_agent/data/bird-interact-full/bird_interact_data.jsonl --log_dir ./bird_interact_agent/outputs/single_runs/debug --max_turns 100 --agent_model openai/gpt-oss-120b --user_model openai/gpt-oss-120b --user_patience_budget 6 --agent_model_provider rits --user_model_provider rits --db_port 5432 --use_encoder_decoder --verbose
 ```
+

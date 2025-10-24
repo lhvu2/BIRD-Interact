@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default settings
-DATA_PATH="./data/bird-interact-lite/bird_interact_data.jsonl"
+DATA_PATH="./data/bird-interact-full/bird_interact_data.jsonl"
 LOG_DIR="./outputs/single_runs/"
 MAX_TURNS=100
 
@@ -27,6 +27,7 @@ TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 HUMAN_MODE=false
 
 #### DB settings
+DB_HOST=bird_interact_postgresql_full
 DB_PORT=5432
 
 # Parse command-line arguments
@@ -126,6 +127,7 @@ CMD+=" --user_patience_budget $USER_PATIENCE_BUDGET"
 CMD+=" --agent_model_provider $AGENT_MODEL_PROVIDER"
 CMD+=" --user_model_provider $USER_MODEL_PROVIDER"
 CMD+=" --db_port $DB_PORT"
+CMD+=" --db_host $DB_HOST"
 
 # Add optional flags
 if [ "$USE_ENCODER_DECODER" = true ]; then

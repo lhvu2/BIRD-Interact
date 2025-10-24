@@ -11,5 +11,8 @@ RUN apt-get update && apt-get install -y postgresql-client
 COPY ./requirements.txt /app
 RUN pip install -r /app/requirements.txt
 
+# Install debugy
+RUN pip install debugpy
+
 # Set entrypoint to keep the container running for testing
 CMD ["tail", "-f", "/dev/null"]

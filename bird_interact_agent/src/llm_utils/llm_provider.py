@@ -4,6 +4,8 @@ import openai
 from typing import Dict, List, Optional, Union, Any
 from openai import OpenAI
 from src.llm_utils.config import model_config
+import os
+rits_api_key = os.environ['RITS_API_KEY']
 
 # Try importing Vertex AI utils
 try:
@@ -59,7 +61,21 @@ class LLMProvider:
             
             # Set up OpenAI client
             self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
+        elif self.provider == "rits":
+
+            print(f"rits_api_key: {rits_api_key}")
+
+            # Get API key from environment or config file
+            self.api_key = api_key or model_config["rits"]["api_key"]
+            # Get base URL from environment or config file
+            self.base_url = base_url or model_config["rits"]["base_url"]
             
+            # Set up OpenAI client
+            self.client = OpenAI(
+                                api_key=self.api_key, 
+                                base_url=self.base_url,
+                                default_headers={'RITS_API_KEY': rits_api_key}
+                                )    
         # Set up Gemini config if needed
         elif self.provider == "gemini":
             if not _vertex_ai_available:
@@ -209,7 +225,7 @@ class LLMProvider:
                     if msg["role"] == "user":
                         self.token_counter.add_system_input(msg["content"])
             
-            if self.provider == "openai" or self.provider == "dashscope":
+            if self.provider == "openai" or self.provider == "dashscope" or self.provider == "rits":
                 response = self.client.chat.completions.create(
                     model=self.model_id,
                     messages=messages,

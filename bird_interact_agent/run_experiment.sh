@@ -2,12 +2,20 @@
 
 # Default settings
 DATA_PATH="./data/bird-interact-lite/bird_interact_data.jsonl"
+#DATA_PATH="./data/bird-interact-lite/bird_interact_data.jsonl"
 LOG_DIR="./outputs/single_runs/"
 MAX_TURNS=100
-AGENT_MODEL="gemini-2.0-flash"
-AGENT_MODEL_PROVIDER="gemini"
-USER_MODEL="gemini-2.0-flash"
-USER_MODEL_PROVIDER="gemini"
+
+# AGENT_MODEL="gemini-2.0-flash"
+# AGENT_MODEL_PROVIDER="gemini"
+# USER_MODEL="gemini-2.0-flash"
+# USER_MODEL_PROVIDER="gemini"
+
+AGENT_MODEL="openai/gpt-oss-120b"
+AGENT_MODEL_PROVIDER="rits"
+USER_MODEL="openai/gpt-oss-120b"
+USER_MODEL_PROVIDER="rits"
+
 USER_PATIENCE_BUDGET=6
 USE_ENCODER_DECODER=true
 #### Debug settings

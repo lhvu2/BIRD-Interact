@@ -38,11 +38,16 @@ services:
   bird_interact_eval:
     image: docker.io/shawnxxh/bird-interact-eval:latest
     container_name: bird_interact_eval
+    environment:
+      - RITS_API_KEY=${RITS_API_KEY}
+      - IBM_LITELLM_API_KEY=${IBM_LITELLM_API_KEY}
     volumes:
       - ../:/app/
     depends_on:
       - postgresql
       - postgresql_full
+    ports:
+      - "5678:5678"   # 👈 add this line for VSCode debugpy
     command: ["tail", "-f", "/dev/null"]
 
 volumes:

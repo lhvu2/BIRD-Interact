@@ -113,9 +113,10 @@ done
 
 # Add timestamp to log directory to avoid overwriting previous results
 LOG_DIR="${LOG_DIR}/${TIMESTAMP}"
+LOG_FILE="${LOG_DIR}/logs.txt"
 
 # Build command
-CMD="PYTHONPATH=$(pwd) python experiments/eval_react_bird_interact.py"
+CMD="PYTHONPATH=$(pwd) python -u experiments/eval_react_bird_interact.py"
 CMD+=" --env bird_interact_sql"
 CMD+=" --data_path $DATA_PATH"
 CMD+=" --log_dir $LOG_DIR"
@@ -151,6 +152,8 @@ fi
 if [ "$HUMAN_MODE" = true ]; then
   CMD+=" --human_mode"
 fi
+
+CMD+=" 2>&1 | tee $LOG_FILE"
 
 # Print the command
 echo "Running experiment with command:"

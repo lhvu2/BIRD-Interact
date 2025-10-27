@@ -31,11 +31,12 @@ import argparse, json
 parser = argparse.ArgumentParser(description='ReAct evaluation for BIRD-Interact environment')
 
 # --- Core experiment settings ---
-parser.add_argument('--data_path', type=str, default='./bird_interact_agent/data/bird-interact-lite/bird_interact_data.jsonl', help='Path to dataset to evaluate on')
+#parser.add_argument('--data_path', type=str, default='./bird_interact_agent/data/bird-interact-lite/bird_interact_data.jsonl', help='Path to dataset to evaluate on')
+parser.add_argument('--data_path', type=str, default='./bird_interact_agent/data/bird-interact-full/bird_interact_data.jsonl', help='Path to dataset to evaluate on')
 parser.add_argument('--env', choices=['bird_interact_sql'], default='bird_interact_sql', help='BIRD-Interact environment to run eval on')
 parser.add_argument('--log_dir', type=str, default='./bird_interact_agent/debug/outputs/single_runs', help='Folder to save experiment run log file to')
 parser.add_argument('--max_turns', type=int, default=100, help='Maximum number of interaction turns')
-parser.add_argument('--verbose', action='store_true', help='Print detailed logs to stdout')
+parser.add_argument('--verbose', action='store_false', help='Print detailed logs to stdout')
 
 # --- Model configuration ---
 parser.add_argument('--agent_model', type=str, default='openai/gpt-oss-120b', help='Model to use for agent generation')
@@ -45,7 +46,7 @@ parser.add_argument('--user_model_provider', type=str, default='rits', help='LLM
 
 # --- Database configuration ---
 parser.add_argument('--db_host', type=str, default='localhost', help='Database host to connect to')
-parser.add_argument('--db_port', type=int, default=5432, help='Database port to connect to')
+parser.add_argument('--db_port', type=int, default=5433, help='Database port to connect to')
 
 # --- Budget & behavioral settings ---
 parser.add_argument('--env_interact_budget', type=int, default=3, help='Budget for environment interactions')

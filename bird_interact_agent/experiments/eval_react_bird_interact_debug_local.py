@@ -42,7 +42,8 @@ parser.add_argument('--verbose', action='store_false', help='Print detailed logs
 parser.add_argument('--agent_model', type=str, default='openai/gpt-oss-120b', help='Model to use for agent generation')
 #parser.add_argument('--agent_model', type=str, default='meta-llama/llama-3-3-70b-instruct', help='Model to use for agent generation')
 #parser.add_argument('--user_model', type=str, default='openai/gpt-oss-120b', help='Model to use for user simulator')
-parser.add_argument('--user_model', type=str, default='meta-llama/llama-3-3-70b-instruct', help='Model to use for user simulator')
+#parser.add_argument('--user_model', type=str, default='meta-llama/llama-3-3-70b-instruct', help='Model to use for user simulator')
+parser.add_argument('--user_model', type=str, default='meta-llama/llama-4-maverick-17b-128e-instruct-fp8', help='Model to use for user simulator')
 parser.add_argument('--agent_model_provider', type=str, default='rits', help='LLM provider to use for agent model')
 parser.add_argument('--user_model_provider', type=str, default='rits', help='LLM provider to use for user simulator')
 

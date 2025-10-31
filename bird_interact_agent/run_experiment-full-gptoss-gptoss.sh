@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Default settings
-DATA_PATH="./data/bird-interact-full/bird_interact_data_50.jsonl"
+#DATA_PATH="./data/bird-interact-full/bird_interact_data_50.jsonl"
+DATA_PATH="./data/bird-interact-full/bird_interact_data_select_one.jsonl"
 LOG_DIR="./outputs/single_runs/"
 MAX_TURNS=100
 

@@ -68,7 +68,8 @@ class LLMProvider:
             # Get API key from environment or config file
             self.api_key = api_key or model_config["rits"]["api_key"]
             # Get base URL from environment or config file
-            self.base_url = base_url or model_config["rits"]["base_url"]
+            base_url = model_config["rits"]["base_url"] + model_id.split("/")[-1] + "/v1"
+            self.base_url = base_url 
             
             # Set up OpenAI client
             self.client = OpenAI(

@@ -10,7 +10,8 @@ model_config = {
     },
     "rits": 
     {
-        "base_url": "https://inference-3scale-apicast-production.apps.rits.fmaas.res.ibm.com/gpt-oss-120b/v1", 
+        #"base_url": "https://inference-3scale-apicast-production.apps.rits.fmaas.res.ibm.com/gpt-oss-120b/v1", 
+        "base_url": "https://inference-3scale-apicast-production.apps.rits.fmaas.res.ibm.com/", 
         "api_key": rits_api_key,
     },
     "openai": {
